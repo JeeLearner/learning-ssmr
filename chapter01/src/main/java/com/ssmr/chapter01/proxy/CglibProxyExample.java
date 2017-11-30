@@ -17,6 +17,7 @@ public class CglibProxyExample implements MethodInterceptor {
      * @return 代理逻辑返回
      * @throws Throwable 异常
      */
+    @Override
     public Object intercept(Object proxy, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
         System.err.println("调用真实对象前");
         // CGLIB反射调用真实对象方法
