@@ -10,8 +10,8 @@ public class ReflectTest {
     }
 
     //反射生成对象
-    public ReflectServiceImpl getInstance(){
-        ReflectServiceImpl object = null;
+    public com.ssmr.chapter01.reflect.ReflectServiceImpl getInstance(){
+        com.ssmr.chapter01.reflect.ReflectServiceImpl object = null;
         try {
             object = (ReflectServiceImpl) Class.forName("com.ssmr.chapter01.reflect.ReflectServiceImpl").newInstance();
         }catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex){
