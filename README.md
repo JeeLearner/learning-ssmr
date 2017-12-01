@@ -13,4 +13,7 @@
     *  proxy
     *  interceptor
     *  observer
+    *  factory
+    *  builder
+    
 
