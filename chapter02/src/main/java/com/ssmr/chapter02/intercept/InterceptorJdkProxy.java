@@ -1,7 +1,6 @@
-package com.ssmr.chapter01.intercept;
+package com.ssmr.chapter02.intercept;
 
 
-import javax.naming.event.ObjectChangeListener;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;

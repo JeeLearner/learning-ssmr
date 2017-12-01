@@ -1,4 +1,4 @@
-package com.ssmr.chapter01.proxy;
+package com.ssmr.chapter02.proxy;
 
 public class HelloWorldImpl implements HelloWorld {
 

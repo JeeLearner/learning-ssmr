@@ -1,4 +1,4 @@
-package com.ssmr.chapter01.intercept;
+package com.ssmr.chapter02.intercept;
 
 import java.lang.reflect.Method;
 

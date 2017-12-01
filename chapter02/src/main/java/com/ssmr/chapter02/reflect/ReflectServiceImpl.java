@@ -1,4 +1,4 @@
-package com.ssmr.chapter01.reflect;
+package com.ssmr.chapter02.reflect;
 
 public class ReflectServiceImpl {
     public void sayHello(String name){

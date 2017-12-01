@@ -1,4 +1,4 @@
-package com.ssmr.chapter01.proxy;
+package com.ssmr.chapter02.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

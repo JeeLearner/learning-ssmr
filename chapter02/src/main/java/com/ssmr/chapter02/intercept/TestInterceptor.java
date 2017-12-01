@@ -1,7 +1,7 @@
-package com.ssmr.chapter01.intercept;
+package com.ssmr.chapter02.intercept;
 
-import com.ssmr.chapter01.proxy.HelloWorld;
-import com.ssmr.chapter01.proxy.HelloWorldImpl;
+import com.ssmr.chapter02.proxy.HelloWorld;
+import com.ssmr.chapter02.proxy.HelloWorldImpl;
 
 public class TestInterceptor {
 
@@ -12,7 +12,7 @@ public class TestInterceptor {
 
     //测试拦截器
     public static void testInterceptor(){
-        HelloWorld proxy = (HelloWorld) InterceptorJdkProxy.bind(new HelloWorldImpl(),"com.ssmr.chapter01.intercept.MyInterceptor");
+        HelloWorld proxy = (HelloWorld) InterceptorJdkProxy.bind(new HelloWorldImpl(),"com.ssmr.chapter02.intercept.MyInterceptor");
         proxy.sayHelloWorld();
         //结果
         /*
@@ -28,11 +28,11 @@ public class TestInterceptor {
     //测试责任链模式上的多拦截器
     public static void testChain(){
         HelloWorld proxy1 = (HelloWorld) InterceptorJdkProxy.bind(
-                new HelloWorldImpl(), "com.ssmr.chapter01.intercept.InterceptorImpl1");
+                new HelloWorldImpl(), "com.ssmr.chapter02.intercept.InterceptorImpl1");
         HelloWorld proxy2 = (HelloWorld) InterceptorJdkProxy.bind(
-                proxy1, "com.ssmr.chapter01.intercept.InterceptorImpl2");
+                proxy1, "com.ssmr.chapter02.intercept.InterceptorImpl2");
         HelloWorld proxy3 = (HelloWorld) InterceptorJdkProxy.bind(
-                proxy2, "com.ssmr.chapter01.intercept.InterceptorImpl3");
+                proxy2, "com.ssmr.chapter02.intercept.InterceptorImpl3");
         proxy3.sayHelloWorld();
     }
 

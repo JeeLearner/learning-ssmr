@@ -1,6 +1,6 @@
-package com.ssmr.chapter01.proxy;
+package com.ssmr.chapter02.proxy;
 
-import com.ssmr.chapter01.reflect.ReflectServiceImpl;
+import com.ssmr.chapter02.reflect.ReflectServiceImpl;
 
 public class ProxyTest {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.ssmr.chapter01.proxy;
+package com.ssmr.chapter02.proxy;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;

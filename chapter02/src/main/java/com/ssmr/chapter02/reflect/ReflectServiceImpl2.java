@@ -1,6 +1,4 @@
-package com.ssmr.chapter01.reflect;
-
-import java.lang.reflect.InvocationTargetException;
+package com.ssmr.chapter02.reflect;
 
 public class ReflectServiceImpl2 {
     private String name;
