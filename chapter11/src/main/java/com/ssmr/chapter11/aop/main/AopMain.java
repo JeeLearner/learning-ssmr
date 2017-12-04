@@ -23,6 +23,7 @@ public class AopMain {
      after ....
      afterReturning ......
      */
+    //注意：这个结果和通过XML方式是不同的,可能是这个版本的bug
     public static void testAnnotation(){
         ApplicationContext ctx = new AnnotationConfigApplicationContext(AopConfig.class);
         RoleService roleService = ctx.getBean(RoleService.class);
@@ -46,6 +47,7 @@ public class AopMain {
      after ....
      afterReturning ....
      */
+    //注意：这个结果和通过XML方式是不同的,可能是这个版本的bug
     public static void testXml(){
         ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-cfg-aop-test.xml");
         RoleService roleService = ctx.getBean(RoleService.class);

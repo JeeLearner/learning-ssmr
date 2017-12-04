@@ -15,5 +15,10 @@
     *  observer
     *  factory
     *  builder
-    
+ * chapter11 
+    *  game
+    *  aop
+    *  xml
+    *  oldaop
+    *  multi
 
