@@ -29,11 +29,6 @@
     *  oldaop
     *  multi
  * chapter14 Spring MVC的初始化和流程
-    *  
-    *  aop
-    *  xml
-    *  oldaop
-    *  multi
  * chapter15 深入Spring MVC组件开发
 
 
