@@ -30,5 +30,9 @@
     *  multi
  * chapter14 Spring MVC的初始化和流程
  * chapter15 深入Spring MVC组件开发
-
+    *  控制器接收各类请求参数
+    *  重定向
+    *  保存并获取属性参数
+    *  拦截器
+    *  
 
