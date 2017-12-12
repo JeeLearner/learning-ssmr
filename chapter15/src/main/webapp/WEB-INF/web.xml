@@ -27,6 +27,15 @@
     <load-on-startup>2</load-on-startup>
     <!--Servlet3.0新特性,异步处理，默认false-->
     <async-supported>true</async-supported>
+
+    <!--MultipartResolver参数-->
+    <multipart-config>
+      <location>e:/mvc/</location>
+      <max-file-size>5242880</max-file-size>
+      <max-request-size>10485760</max-request-size>
+      <file-size-threshold>0</file-size-threshold>
+    </multipart-config>
+
   </servlet>
 
   <!-- Servlet拦截配置 -->
@@ -34,4 +43,5 @@
     <servlet-name>dispatcher</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
+
 </web-app>

@@ -5,7 +5,10 @@ import com.ssmr.chapter15.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
@@ -88,6 +91,48 @@ public class RoleController {
     }
 
 
+    @RequestMapping(value = "/getRoleByModelMap", method = RequestMethod.GET)
+    public ModelAndView getRoleByModelMap(@RequestParam("id") Long id, ModelMap modelMap) {
+        Role role = roleService.getRole(id);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("roleDetails");
+        modelMap.addAttribute("role", role);
+        return mv;
+    }
 
+    @RequestMapping(value = "/getRoleByModel", method = RequestMethod.GET)
+    public ModelAndView getRoleByModel(@RequestParam("id") Long id, Model model) {
+        Role role = roleService.getRole(id);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("roleDetails");
+        model.addAttribute("role", role);
+        return mv;
+    }
 
+    @RequestMapping(value = "/getRoleByMv", method = RequestMethod.GET)
+    public ModelAndView getRoleByMv(@RequestParam("id") Long id, ModelAndView mv) {
+        Role role = roleService.getRole(id);
+        mv.setViewName("roleDetails");
+        mv.addObject("role", role);
+        return mv;
+    }
+
+    @RequestMapping(value = "/getRoleForJson", method = RequestMethod.GET)
+    public ModelAndView getRoleForJson(@RequestParam("id") Long id) {
+        ModelAndView mv = new ModelAndView();
+        Role role = roleService.getRole(id);
+        mv.setView(new MappingJackson2JsonView());
+        mv.addObject("role", role);
+        return mv;
+    }
+
+    /*
+        配置了InternalResourceViewResolver，所以能生成JstlView视图
+     */
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String index(@RequestParam("id") Long id, ModelMap model) {
+        Role role = roleService.getRole(id);
+        model.addAttribute("role", role);
+        return "roleDetails";
+    }
 }

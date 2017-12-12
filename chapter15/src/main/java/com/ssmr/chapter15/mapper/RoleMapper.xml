@@ -12,16 +12,16 @@
 
     <select id="findRoles" parameterType="com.ssmr.chapter15.pojo.RoleParams" resultType="com.ssmr.chapter15.pojo.Role">
          select id,role_name as roleName, note
-         from r_role
+         from t_role
          <where>
              <if test="roleName != null">
-                 role_name like concat('%', #{roleName}, '%')
+                 and role_name like concat('%', #{roleName}, '%')
              </if>
              <if test="note != null">
-                 note like concat('%', #{note}, '%')
+                 and note like concat('%', #{note}, '%')
              </if>
-             limit #{pageParams.start}, #{pageParams.limit}
          </where>
+        limit #{pageParams.start}, #{pageParams.limit}
     </select>
 
     <delete id="deleteRole" parameterType="long">

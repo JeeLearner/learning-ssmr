@@ -24,7 +24,7 @@
 			<mvc:mapping path="/role/*.do"/>
 			<bean class="com.ssmr.chapter15.interceptor.RoleInterceptor"/>
 		</mvc:interceptor>
-		<mvc:interceptor>
+		<!--<mvc:interceptor>
 			<mvc:mapping path="/role/*.do" />
 			<bean class="com.ssmr.chapter15.interceptor.RoleInterceptor1" />
 		</mvc:interceptor>
@@ -35,6 +35,6 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/role/*.do" />
 			<bean class="com.ssmr.chapter15.interceptor.RoleInterceptor3" />
-		</mvc:interceptor>
+		</mvc:interceptor>-->
 	</mvc:interceptors>
 </beans>
