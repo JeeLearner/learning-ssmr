@@ -41,4 +41,7 @@
        *  Excel视图的使用
     *  上传文件
  * chapter16 Spring MVC高级应用
-    *  
+    *  SpringMVC的数据转换和格式化
+    *  为控制器添加通知
+    *  处理异常
+    *  国际化

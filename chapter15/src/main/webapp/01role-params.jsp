@@ -73,7 +73,7 @@
 </head>
 <body>
 <!-- 根据你的需要改变请求url -->
-<form id="form" action="./role/addRole3.do">
+<form id="form" action="./role/addRole.do">
     <table>
         <tr>
             <td>角色名称</td>
