@@ -9,7 +9,7 @@
 <body>
 	<h2>
 	    <!-- 找到属性文件变量名为welcome的配置 -->
-		<spring:message code="welcome" />
+		<spring:message code="test" />
 	</h2>
 	Locale: ${pageContext.response.locale }
 </body>

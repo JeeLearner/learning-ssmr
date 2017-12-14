@@ -27,10 +27,64 @@
 		</property>
 	</bean>-->
 
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="jsonConverter" />
+			</list>
+		</property>
+	</bean>
+	<!-- 将Jackson2HttpMessageConverter的默认格式化输出为false,注意boolean 类型必须为：true,false,否则报错不能解析 -->
+	<bean id="jsonConverter"
+		  class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>application/json;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+	<!-- <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/> -->
 
 
+	<!-- ResourceBundleMessageSource和ReloadableResourceBundleMessageSource可二者选其一 -->
+	<!--
+	<bean id="messageSource"
+	    class="org.springframework.context.support.ResourceBundleMessageSource">
+	    <property name="defaultEncoding" value="UTF-8"/>
+	    <property name="basenames" value="msg"/>
+	</bean>
+	<bean id="messageSource"
+	    class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+	    <property name="defaultEncoding" value="UTF-8"/>
+	<property name="basenames" value="classpath:msg"/>
+	<property name="CacheSeconds" value="3600"/>
+	</bean>
+	-->
 
+	<!-- 由于可靠性,一般优先选择SessionLocaleResolver -->
+	<!--
+        <bean id="localeResolver"
+            class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+            <property name="cookieName" value="lang"/>
+            <property name="cookieMaxAge" value="20"/>
+            <property name="defaultLocale" value="zh_CN"/>
+        </bean>
+        <bean id="localeResolver"
+            class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+            <property name="defaultLocale" value="zh_CN"/>
+        </bean>
+        -->
 
+	<!-- 配置拦截器LocaleChangeInterceptor-->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/message/*.do" />
+			<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+				<!--监控请求参数language -->
+				<property name="paramName" value="language" />
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 
 
