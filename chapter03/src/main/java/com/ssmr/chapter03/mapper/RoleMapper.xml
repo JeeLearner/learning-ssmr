@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssmr.chapter03.dao.RoleDao">
+
+	<insert id="insertRole" parameterType="role">
+		INSERT INTO t_role(role_name,note)
+		VALUE (#{roleName}, #{note})
+	</insert>
+
+	<delete id="deleteRole" parameterType="long">
+		DELETE FROM t_role
+		WHERE id = #{id}
+	</delete>
+
+	<update id="updateRole" parameterType="long">
+		UPDATE t_role
+		SET role_name = #{roleName}, note = #{note}
+		WHERE id = #{id}
+	</update>
+
+	<select id="getRole" parameterType="long" resultType="role">
+		SELECT id,role_name as roleName,note
+		FROM t_role
+		WHERE id = #{id}
+	</select>
+
+	<select id="findRoles" parameterType="string" resultType="role">
+		SELECT id,role_name as roleName,note
+		FROM t_role
+		WHERE role_name LIKE concat('%', #{roleName}, '%')
+	</select>
+</mapper>

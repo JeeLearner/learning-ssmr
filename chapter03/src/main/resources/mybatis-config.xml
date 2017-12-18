@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+  <!--别名-->
+  <typeAliases>
+    <typeAlias alias="role" type="com.ssmr.chapter03.pojo.Role"/>
+  </typeAliases>
+  <!--数据库环境-->
+  <environments default="development">
+    <environment id="development">
+      <!--配置事务管理器，这里采用MyBatis的JDBC管理器方式-->
+      <transactionManager type="JDBC" />
+      <!--type="POOLED"代表采用MyBatis内部提供的连接池方式-->
+      <dataSource type="POOLED">
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/test-ssmr"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+      </dataSource>
+    </environment>
+  </environments>
+
+  <!--映射文件-->
+  <mappers>
+    <!--<mapper resource="com/ssmr/chapter03/mapper/RoleMapper.xml"/>-->
+  </mappers>
+
+</configuration>

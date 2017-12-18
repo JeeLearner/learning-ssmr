@@ -15,6 +15,10 @@
     *  观察者模式
     *  工厂模式和抽象工厂模式
     *  建造者模式
+* chapter03 认识MyBatis核心组件
+    *  SqlSessionFactory和SqlSession
+    *  映射器
+    *  生命周期
  * chapter09 Spring IOC的概念
      *  Spring IOC容器
  * chapter10 装配Spring Bean  
