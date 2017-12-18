@@ -19,6 +19,9 @@
     *  SqlSessionFactory和SqlSession
     *  映射器
     *  生命周期
+* chapter04 MyBatis配置
+    *  properties属性
+    *  settings设置
  * chapter09 Spring IOC的概念
      *  Spring IOC容器
  * chapter10 装配Spring Bean  

@@ -24,7 +24,7 @@
 
   <!--映射文件-->
   <mappers>
-    <!--<mapper resource="com/ssmr/chapter03/mapper/RoleMapper.xml"/>-->
+    <mapper resource="com/ssmr/chapter03/mapper/RoleMapper.xml"/>
   </mappers>
 
 </configuration>
