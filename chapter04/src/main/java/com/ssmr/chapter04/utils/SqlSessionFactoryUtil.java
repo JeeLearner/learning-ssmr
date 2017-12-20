@@ -1,6 +1,7 @@
 package com.ssmr.chapter04.utils;
 
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import sun.misc.BASE64Decoder;
@@ -28,7 +29,9 @@ public class SqlSessionFactoryUtil {
             String resource = "mybatis-config.xml";
             InputStream inputStream;
             try {
-                InputStream in = Resources.getResourceAsStream("jdbc.properties");
+                inputStream = Resources.getResourceAsStream(resource);
+                sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+                /*InputStream in = Resources.getResourceAsStream("jdbc.properties");
                 Properties props = new Properties();
                 props.load(in);
                 String username = props.getProperty("database.username");
@@ -38,7 +41,7 @@ public class SqlSessionFactoryUtil {
                 props.put("database.password", CodeUtils.decode(password));
                 inputStream = Resources.getResourceAsStream(resource);
                 // 使用程序传递的方式覆盖原有的properties属性参数
-                sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream, props);
+                sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream, props);*/
             } catch (IOException e){
                 e.printStackTrace();
                 return null;
@@ -46,5 +49,12 @@ public class SqlSessionFactoryUtil {
             return sqlSessionFactory;
         }
     }
+    public static SqlSession openSqlSession() {
+        if (sqlSessionFactory == null) {
+            getSqlSessionFactory();
+        }
+        return sqlSessionFactory.openSession();
+    }
+
 
 }

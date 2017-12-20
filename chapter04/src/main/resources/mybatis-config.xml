@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="jdbc.properties"/>
+
+    <typeAliases>
+        <typeAlias alias="role" type="com.ssmr.chapter04.pojo.Role"/>
+        <typeAlias alias="user" type="com.ssmr.chapter04.pojo.User"/>
+    </typeAliases>
+
+    <typeHandlers>
+        <!--<typeHandler jdbcType="VARCHAR" javaType="String" handler="com.ssmr.chapter04.typehandler.MyTypeHandler"/>-->
+        <package name="com.ssmr.chapter04.typehandler"/>
+    </typeHandlers>
+
+    <objectFactory type="com.ssmr.chapter04.objectfactory.MyObjectFactory">
+        <property name="prop1" value="value1"/>
+    </objectFactory>
+
+    <!-- 数据库环境 -->
+    <environments default="development">
+        <environment id="development">
+            <!--事务管理器-->
+            <transactionManager type="JDBC"/>
+            <!--数据源-->
+            <dataSource type="com.ssmr.chapter04.datasource.DbcpDataSourceFactory">
+                <property name="driver" value="${database.driver}"/>
+                <property name="url" value="${database.url}"/>
+                <property name="username" value="${database.username}"/>
+                <property name="password" value="${database.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <databaseIdProvider type="com.ssmr.chapter04.databaseidprovider.MyDatabaseIdProvider">
+        <property name="msg" value="自定义DatabaseIdProvider"/>
+    </databaseIdProvider>
+
+    <mappers>
+        <!--<package name="com.ssmr.chapter04.mapper"/>-->
+        <mapper resource="com/ssmr/chapter04/mapper/RoleMapper.xml"/>
+        <mapper resource="com/ssmr/chapter04/mapper/UserMapper.xml"/>
+    </mappers>
+
+<!--<mappers>
+    <mapper url="file:///var/mappers/com/ssmr/chapter04/mapper/RoleMapper.xml"/>
+</mappers>-->
+
+</configuration>

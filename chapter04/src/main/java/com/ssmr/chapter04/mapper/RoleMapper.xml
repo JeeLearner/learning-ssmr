@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssmr.chapter04.dao.RoleDao">
+    <resultMap id="roleMapper" type="role">
+        <result property="id" column="id"/>
+        <result property="roleName" column="role_name" jdbcType="VARCHAR" javaType="string"/>
+        <result property="note" column="note" typeHandler="com.ssmr.chapter04.typehandler.MyTypeHandler"/>
+    </resultMap>
+
+    <select id="getRole" parameterType="long" resultMap="roleMapper">
+		SELECT id,role_name as roleName,note
+		FROM t_role
+		WHERE id = #{id}
+	</select>
+
+    <select id="findRoles" parameterType="string" resultMap="roleMapper">
+		SELECT id,role_name as roleName,note
+		FROM t_role
+		WHERE role_name LIKE concat('%', #{roleName, jdbcType=VARCHAR,javaType=string}, '%')
+	</select>
+
+	<select id="findRoles2" parameterType="string" resultMap="roleMapper">
+		SELECT id,role_name as roleName,note
+		FROM t_role
+		WHERE role_name LIKE concat('%', #{note, typeHandler=com.ssmr.chapter04.typehandler.MyTypeHandler}, '%')
+	</select>
+</mapper>

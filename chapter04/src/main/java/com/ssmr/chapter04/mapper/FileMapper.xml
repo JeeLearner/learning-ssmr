@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssmr.chapter04.dao.FileDao">
+    <resultMap id="file" type="com.ssmr.chapter04.pojo.TestFile">
+        <result property="id" column="id"/>
+        <result property="content" column="content" typeHandler="org.apache.ibatis.type.BlobTypeHandler"/>
+    </resultMap>
+
+    <select id="getFile" parameterType="long" resultMap="file">
+		SELECT id,content
+		FROM t_file
+		WHERE id = #{id}
+	</select>
+</mapper>

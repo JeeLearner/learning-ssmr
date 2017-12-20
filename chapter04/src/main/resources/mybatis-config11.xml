@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration> <!--配置-->
+	<!--<properties/> &lt;!&ndash;属性&ndash;&gt;
+	<settings/> &lt;!&ndash;设置&ndash;&gt;
+	<typeAliases/> &lt;!&ndash;类型命名&ndash;&gt;
+	<typeHandlers/> &lt;!&ndash;类型处理器&ndash;&gt;
+	<objectFactory/> &lt;!&ndash;对象工厂&ndash;&gt;
+	<plugins/> &lt;!&ndash;插件&ndash;&gt;
+	<environments> &lt;!&ndash;配置环境&ndash;&gt;
+		<environment> &lt;!&ndash;环境变量&ndash;&gt;
+			<transactionManager/> &lt;!&ndash;事务管理器&ndash;&gt;
+			<dataSource/> &lt;!&ndash;数据源&ndash;&gt;
+		</environment>
+	</environments>
+	<databaseIdProvider/> &lt;!&ndash;数据库厂商标识&ndash;&gt;
+	<mappers/> &lt;!&ndash;映射器&ndash;&gt;-->
+
+</configuration>
