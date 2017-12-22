@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="jdbc.properties" />
+
+	<settings>
+		<!--延迟加载的开关-->
+		<setting name="lazyLoadingEnabled" value="true"/>
+		<!--层级延迟加载的开关。版本3.4.1(包含)之前为true，之后为false-->
+		<setting name="aggressiveLazyLoading" value="false"/>
+	</settings>
+	
+	<!--<typeAliases>
+		<package name="com.ssmr.chapter05.pojo" />
+	</typeAliases>-->
+	<!-- 数据库环境 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${database.driver}" />
+				<property name="url" value="${database.url}" />
+				<property name="username" value="${database.username}" />
+				<property name="password" value="${database.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<!--<package name="com.ssmr.chapter05.mapper" />-->
+		<mapper resource="com/ssmr/chapter05/mapper/EmployeeMapper.xml"/>
+		<mapper resource="com/ssmr/chapter05/mapper/EmployeeTaskMapper.xml"/>
+		<mapper resource="com/ssmr/chapter05/mapper/FemaleHealthFormMapper.xml"/>
+		<mapper resource="com/ssmr/chapter05/mapper/MaleHealthFormMapper.xml"/>
+		<mapper resource="com/ssmr/chapter05/mapper/TaskMapper.xml"/>
+		<mapper resource="com/ssmr/chapter05/mapper/WorkCardMapper.xml"/>
+		<mapper resource="com/ssmr/chapter05/mapper/EmployeeMapper2.xml"/>
+	</mappers>
+</configuration>

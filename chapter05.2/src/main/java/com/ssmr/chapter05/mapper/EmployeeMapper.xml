@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssmr.chapter05.dao.EmployeeDao">
+	<resultMap id="employeeMap" type="com.ssmr.chapter05.pojo.Employee">
+		<id column="id" property="id" />
+		<result column="real_name" property="realName" />
+		<result column="sex" property="sex"
+				typeHandler="com.ssmr.chapter05.typehandler.SexTypeHandler" />
+		<result column="birthday" property="birthday" />
+		<result column="mobile" property="mobile" />
+		<result column="email" property="email" />
+		<result column="position" property="position" />
+		<result column="note" property="note" />
+		<!--雇员工牌表一对一级联-->
+		<association property="workCard" column="id"
+					 select="com.ssmr.chapter05.dao.EmployeeTaskDao.getEmployeeTaskByEmpId"/>
+		<!--雇员和雇员任务一对多级联-->
+		<collection property="employeeTaskList" column="id"
+					fetchType="eager"
+					select="com.ssmr.chapter05.dao.EmployeeTaskDao.getEmployeeTaskByEmpId"/>
+		<!--鉴别器级联-->
+		<discriminator javaType="long" column="sex">
+			<case value="0" resultMap="maleHealthFormMapper" />
+			<case value="1" resultMap="femaleHealthFormMapper"/>
+		</discriminator>
+	</resultMap>
+
+	<resultMap id="femaleHealthFormMapper" type="com.ssmr.chapter05.pojo.FemaleEmployee" extends="employeeMap">
+		<!--女性和女性体检表一对一级联-->
+		<association property="femaleHealthForm" column="id"
+					 select="com.ssmr.chapter05.dao.FemaleHealthFormDao.getFemaleHealthForm"/>
+	</resultMap>
+	<resultMap id="maleHealthFormMapper" type="com.ssmr.chapter05.pojo.MaleEmployee" extends="employeeMap">
+		<!--男性和男性体检表一对一级联-->
+		<association property="maleHealthForm" column="id"
+					 select="com.ssmr.chapter05.dao.MaleHealthFormDao.getMaleHealthForm"/>
+	</resultMap>
+
+	<select id="getEmployee" parameterType="long" resultMap="employeeMap">
+		select id, real_name as realName, sex, birthday, mobile, email, position,note
+		from t_employee
+		where id = #{id}
+	</select>
+</mapper>
