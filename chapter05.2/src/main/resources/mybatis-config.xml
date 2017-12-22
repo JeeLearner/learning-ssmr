@@ -4,12 +4,12 @@
 <configuration>
 	<properties resource="jdbc.properties" />
 
-	<settings>
-		<!--延迟加载的开关-->
-		<setting name="lazyLoadingEnabled" value="true"/>
-		<!--层级延迟加载的开关。版本3.4.1(包含)之前为true，之后为false-->
-		<setting name="aggressiveLazyLoading" value="false"/>
-	</settings>
+<settings>
+	<!--延迟加载的开关-->
+	<setting name="lazyLoadingEnabled" value="true"/>
+	<!--层级延迟加载的开关。版本3.4.1(包含)之前为true，之后为false-->
+	<setting name="aggressiveLazyLoading" value="false"/>
+</settings>
 	
 	<!--<typeAliases>
 		<package name="com.ssmr.chapter05.pojo" />

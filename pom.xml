@@ -20,6 +20,8 @@
         <module>chapter13</module>
         <module>chapter03</module>
         <module>chapter04</module>
+        <module>chapter05</module>
+        <module>chapter05.2</module>
     </modules>
 
     <properties>
