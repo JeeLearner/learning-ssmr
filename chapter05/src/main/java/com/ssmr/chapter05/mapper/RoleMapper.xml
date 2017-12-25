@@ -2,24 +2,50 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssmr.chapter05.dao.RoleDao">
-	<resultMap type="com.ssmr.chapter05.pojo.Role" id="roleMapper">
-		<id column="id" property="id" />
-		<result column="role_name" property="roleName" />
-		<result column="note" property="note" />
-		<collection property="userList" column="id"
-					fetchType="lazy"
-					select="com.ssmr.chapter05.mapper.UserMapper.findUserByRoleId" />
-	</resultMap>
+    <resultMap type="com.ssmr.chapter05.pojo.Role" id="roleMapper">
+        <id column="id" property="id"/>
+        <result column="role_name" property="roleName"/>
+        <result column="note" property="note"/>
+        <collection property="userList" column="id"
+                    fetchType="lazy"
+                    select="com.ssmr.chapter05.mapper.UserMapper.findUserByRoleId"/>
+    </resultMap>
 
-	<select id="getRole" parameterType="long" resultMap="roleMapper">
+    <select id="getRole" parameterType="long" resultMap="roleMapper">
 		select id, role_name, note
 		from t_role
 		where id = #{id}
 	</select>
 
-	<select id="findRoleByUserId" parameterType="long" resultMap="roleMapper">
+    <select id="findRoleByUserId" parameterType="long" resultMap="roleMapper">
 		select r.id, r.role_name, r.note
 		from t_role r, t_user_role ur
 		where r.id = ur.role_id and ur.user_id = #{userId}
 	</select>
+
+    <select id="countRole" parameterType="com.ssmr.chapter05.param.PdCountRoleParams" statementType="CALLABLE">
+	{call count_role(
+	#{roleName, mode=IN, jdbcType=VARCHAR},
+	#{total, mode=OUT, jdbcType=INTEGER},
+	#{execDate, mode=OUT, jdbcType=DATE}
+	)}
+</select>
+
+
+    <resultMap type="com.ssmr.chapter05.pojo.Role" id="roleMapper">
+        <id column="id" property="id"/>
+        <result column="role_name" property="roleName"/>
+        <result column="note" property="note"/>
+    </resultMap>
+    <select id="findRole" parameterType="com.ssmr.chapter05.param.PdFindRoleParams" statementType="CALLABLE">
+	{call find_role(
+	#{roleName, mode=IN, jdbcType=VARCHAR},
+	#{start, mode=IN,jdbcType=INTEGER},
+	#{end, mode=IN, jdbcType=INTEGER},
+	#{total, mode=OUT,jdbcType=INTEGER},
+	#{roleList,mode=OUT,jdbcType=CURSOR,
+		javaType=ResultSet,resultMap=roleMap}
+	)}
+</select>
+
 </mapper>

@@ -9,9 +9,9 @@
 		<setting name="aggressiveLazyLoading" value="false" />
 	</settings>-->
 	
-	<typeAliases>
+	<!--<typeAliases>
 		<package name="com.ssmr.chapter05.pojo" />
-	</typeAliases>
+	</typeAliases>-->
 	<!-- 数据库环境 -->
 	<environments default="development">
 		<environment id="development">
@@ -26,6 +26,7 @@
 	</environments>
 
 	<mappers>
-		<package name="com.ssmr.chapter05.mapper" />
+		<!--<package name="com.ssmr.chapter05.mapper" />-->
+		<mapper resource="com/ssmr/chapter05/testcache/RoleMapper2.xml"/>
 	</mappers>
 </configuration>

@@ -30,9 +30,16 @@
     *  databaseIdProvider
     *  mappers
  * chapter05 映射器
-    *  
+    *  select元素
+    *  insert元素
+    *  update和delete元素
+    *  sql元素
+    *  resultMap
+    *  级联
+    *  缓存
+    *  存储过程
  * chapter09 Spring IOC的概念
-     *  Spring IOC容器
+    *  Spring IOC容器
  * chapter10 装配Spring Bean  
     *  依赖注入
     *  装配Bean
