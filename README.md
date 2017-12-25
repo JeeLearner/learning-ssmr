@@ -38,6 +38,13 @@
     *  级联
     *  缓存
     *  存储过程
+ * chapter06 动态SQL
+    *  if元素
+    *  choose/when/otherwise元素
+    *  trim/where/set元素
+    *  foreach元素
+    *  用test判断字符串
+    *  bind元素
  * chapter09 Spring IOC的概念
     *  Spring IOC容器
  * chapter10 装配Spring Bean  

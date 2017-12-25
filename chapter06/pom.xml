@@ -9,7 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>chapter05.2</artifactId>
+    <artifactId>chapter06</artifactId>
+
 
     <build>
         <finalName>chapter05.2</finalName>
@@ -22,4 +23,5 @@
             </resource>
         </resources>
     </build>
+
 </project>

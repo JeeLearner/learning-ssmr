@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssmr.chapter06.mapper.RoleMapper">
+
+    <resultMap id="roleResultMap" type="com.ssmr.chapter06.pojo.Role">
+        <id column="id" property="id"/>
+        <id column="role_name" property="roleName"/>
+        <id column="note" property="note"/>
+    </resultMap>
+
+    <select id="findRoles1" parameterType="string" resultMap="roleResultMap">
+        SELECT id,role_name,note
+        FROM t_role
+        WHERE 1=1
+        <if test="roleName != null and roleName != ''">
+            AND role_name LIKE concat('%', #{roleName}, '%')
+        </if>
+    </select>
+
+    <select id="findRoles2" parameterType="role" resultMap="roleResultMap">
+        SELECT id,role_name,note
+        FROM t_role
+        WHERE 1=1
+        <choose>
+            <when test="id != null and id != ''">
+                AND id = #{id}
+            </when>
+            <when test="roleName != null and roleName != ''">
+                AND role_name LIKE concat('%', #{roleName}, '%')
+            </when>
+            <otherwise>
+                AND note is not null
+            </otherwise>
+        </choose>
+    </select>
+    <select id="findRoles3" parameterType="role" resultMap="roleResultMap">
+        SELECT id,role_name,note
+        FROM t_role
+        <where>
+            <if test="roleName != null and roleName != ''">
+                AND role_name LIKE concat('%', #{roleName}, '%')
+            </if>
+            <if test="note != null and note != ''">
+                AND note LIKE concat('%', #{note}, '%')
+            </if>
+        </where>
+    </select>
+    <select id="findRoles4" parameterType="string" resultMap="roleResultMap">
+        SELECT id,role_name,note
+        FROM t_role
+        <trim prefix="where" prefixOverrides="and">
+            <if test="roleName != null and roleName != ''">
+                AND role_name LIKE concat('%', #{roleName}, '%')
+            </if>
+        </trim>
+    </select>
+
+    <update id="updateRole" parameterType="role">
+        update t_role
+        <set>
+            <if test="roleName != null and roleName != ''">
+                role_name = #{roleName},
+            </if>
+            <if test="note != null and note != ''">
+                note = #{note}
+            </if>
+        </set>
+    </update>
+
+    <select id="findRolesByIds" resultType="role">
+        SELECT *
+        FROM t_role
+        WHERE id IN
+        <foreach collection="idList" item="id" index="index" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+
+    <select id="getRoleTest" parameterType="string" resultMap="roleResultMap">
+        select id, role_name, note
+        from t_role
+        <if test='type == Y" '>
+            where 1=1
+        </if>
+    </select>
+
+    <select id="findRoles5" parameterType="string" resultType="com.ssmr.chapter06.pojo.Role">
+        <bind name="pattern" value="'%' + _parameter + '%'"/>
+        SELECT id,role_name AS roleName,note
+        FROM t_role
+        WHERE role_name like #{pattern}
+    </select>
+    <select id="findRoles6" resultType="com.ssmr.chapter06.pojo.Role">
+        <bind name="pattern_roleName" value="'%' + roleName + '%'"/>
+        <bind name="pattern_note" value="'%' + note + '%'"/>
+        SELECT id,role_name AS roleName,note
+        FROM t_role
+        WHERE role_name like #{pattern_roleName}
+        AND note LIKE #{pattern_note}
+    </select>
+
+<select id="findRoles7" parameterType="com.ssmr.chapter06.pojo.Role" resultMap="roleResultMap">
+    SELECT id,role_name AS roleName,note
+    <bind name="pattern_roleName" value="'%' + _parameter.getRoleName() + '%'"/>
+    <bind name="pattern_note" value="'%' + _parameter.getNote() + '%'"/>
+    FROM t_role
+    <where>
+        <if test="roleName != null and roleName != ''">
+            AND role_name LIKE #{pattern_roleName}
+        </if>
+        <if test="note != null and note != ''">
+            AND note LIKE #{pattern_note}
+        </if>
+    </where>
+</select>
+</mapper>
